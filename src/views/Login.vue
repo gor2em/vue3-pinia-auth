@@ -5,14 +5,17 @@ import Spinner from "../components/Spinner.vue"
 const loginForm = reactive({
     username: undefined,
     password: undefined,
-})
+});
+
+import { useAuthStore } from "../store/auth";
+const authStore = useAuthStore();
 
 </script>
 <template>
-
     <div class="flex items-center justify-center h-screen bg-slate-900">
+
         <form class="border border-slate-800 lg:w-[600px] p-12 rounded-lg"
-            @submit.prevent="$router.push({ name: 'home' })">
+            @submit.prevent="authStore.handleLogin(loginForm)">
             <h2 class="font-bold text-3xl text-white">Giriş Yap.</h2>
 
             <div class="my-4">
@@ -30,6 +33,7 @@ const loginForm = reactive({
             <div class="mt-6">
                 <button type="submit"
                     class="text-center flex gap-4 px-6 py-2 bg-orange-600 hover:bg-orange-900 text-slate-50 font-bold rounded-lg outline-none transition-all focus:duration-600">
+                    <Spinner v-if="authStore.loading" />
                     giriş yap
                 </button>
             </div>

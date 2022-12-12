@@ -1,4 +1,10 @@
 <script setup>
+
+import { useAuthStore } from "../store/auth"
+const authStore = useAuthStore();
+
+const currentUser = authStore.getCurrentUser;
+
 </script>
 <template>
 
@@ -14,8 +20,11 @@
             </nav>
 
             <div class="flex gap-8 whitespace-nowrap">
-                <p class="text-slate-200">merhaba, <span class="font-bold text-orange-600">@test</span></p>
-                <p class="text-slate-400 cursor-pointer hover:text-slate-200" @click="$router.push({ name: 'login' })">çıkış
+                <p class="text-slate-200">merhaba, <span class="font-bold text-orange-600">@{{ currentUser?.username ||
+                        "null"
+                }}</span></p>
+                <p class="text-slate-400 cursor-pointer hover:text-slate-200" @click="authStore.handeLogout">
+                    çıkış
                     yap</p>
             </div>
 
