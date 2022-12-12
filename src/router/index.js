@@ -3,6 +3,11 @@ import { useAuthStore } from "../store/auth";
 
 const routes = [
   {
+    app: "",
+    path: "/",
+    redirect: "/login",
+  },
+  {
     name: "login",
     path: "/login",
     component: () => import("../views/Login.vue"),
@@ -29,8 +34,6 @@ router.beforeEach((to, from, next) => {
   if (authNotRequired.indexOf(to.name) > -1 && isAuth) {
     next({ name: "home" });
   }
-  console.log(authNotRequired.indexOf(to.name));
-  console.log(isAuth)
 
   if (authRequired.indexOf(to.name) > -1) {
     if (isAuth) {
