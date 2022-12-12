@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { useAuthStore } from "../store/auth";
 
 const routes = [
   {
@@ -20,27 +19,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const authStore = useAuthStore();
-  const isAuth = authStore.isAuth;
-
-  const authNotRequired = ["login"];
-  const authRequired = ["home"];
-
-  if (authNotRequired.indexOf(to.name) > -1 && isAuth) {
-    next({ name: "home" });
-  }
-  console.log(authNotRequired.indexOf(to.name));
-  console.log(isAuth)
-
-  if (authRequired.indexOf(to.name) > -1) {
-    if (isAuth) {
-      next();
-    } else {
-      next({ name: "login" });
-    }
-  } else {
-    next();
-  }
+  next();
 });
 
 export default router;
