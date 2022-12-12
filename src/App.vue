@@ -3,7 +3,9 @@
 </script>
 <template>
 
-  <router-view></router-view>
+  <div class="bg-slate-900 h-screen">
+    <router-view></router-view>
+  </div>
 
 </template>
 <style scoped>
