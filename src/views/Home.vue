@@ -18,7 +18,7 @@ const currentUser = authStore.getCurrentUser;
             </nav>
 
             <div class="flex gap-6 whitespace-nowrap">
-                <p class="text-slate-900">merhaba, <span class="font-bold text-orange-600">@{{ currentUser?.username ||
+                <p class="text-slate-200">merhaba, <span class="font-bold text-orange-600">@{{ currentUser?.username ||
                         "null"
                 }}</span></p>
                 <p class="text-slate-400 cursor-pointer underline hover:text-slate-200" @click="authStore.handleLogout">çıkış
